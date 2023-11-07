@@ -12,6 +12,7 @@ public class Flight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private long id;
     @Column
     private String destination;
@@ -23,12 +24,6 @@ public class Flight {
     private String departureTime;
     @ManyToMany(mappedBy = "flights")
     @JsonIgnoreProperties({"flights"})
-    private List<Passenger> passengers;
-
-    @ManyToMany
-    @JoinTable(name = "flight_passenger",
-            joinColumns = @JoinColumn(name = "flight_id"),
-            inverseJoinColumns = @JoinColumn(name = "passenger_id"))
     private List<Passenger> passengers;
 
     public Flight(String destination, int capacity, String departureDate, String departureTime) {
