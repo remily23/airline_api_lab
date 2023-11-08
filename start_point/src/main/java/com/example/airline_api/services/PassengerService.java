@@ -22,4 +22,6 @@ public class PassengerService {
         return passengerRepository.findById(passengerId);
     }
 
+    public void addPassenger(Passenger passenger) {
+    }
 }
