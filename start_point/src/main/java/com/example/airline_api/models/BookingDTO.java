@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Booking {
+public class BookingDTO {
 
     @Id
     private long id;
