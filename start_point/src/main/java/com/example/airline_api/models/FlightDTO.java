@@ -18,7 +18,7 @@ public class FlightDTO {
         this.departureTime = departureTime;
     }
 
-    public Long getId() { 
+    public Long getId() {
         return id;
     }
 
@@ -57,4 +57,5 @@ public class FlightDTO {
     public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
     }
+
 }
