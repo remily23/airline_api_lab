@@ -21,8 +21,13 @@ public class FlightService {
     @Autowired
     PassengerRepository passengerRepository;
 
-    public void addFlight(Flight flight){
+//    public void addFlight(Flight flight){
+//        flightRepository.save(flight);
+//    }
+
+    public Flight addNewFlight(Flight flight){
         flightRepository.save(flight);
+        return flight;
     }
 
     public List<Flight> getAllFlights(){

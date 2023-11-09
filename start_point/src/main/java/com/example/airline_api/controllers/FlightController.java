@@ -17,9 +17,6 @@ public class FlightController {
     @Autowired
     FlightService flightService;
 
-    @Autowired
-    FlightRepository flightRepository;
-
     // Display all available flights
     @GetMapping
     public ResponseEntity<List<Flight>> getAllFlights(){
@@ -34,9 +31,10 @@ public class FlightController {
 
     // Add details of a new flight
     @PostMapping
-    public ResponseEntity<List<Flight>> addNewFlight(@RequestBody Flight flight){
-        flightRepository.save(flight);
-        return new ResponseEntity<>(flightRepository.findAll(), HttpStatus.CREATED);
+    public ResponseEntity<Flight> addNewFlight(@RequestBody Flight flight){
+        Flight savedFlight = flightService.addNewFlight(flight);
+        return new ResponseEntity<>(savedFlight, HttpStatus.CREATED);
+
     }
 
     // Book passenger on a flight
@@ -50,7 +48,7 @@ public class FlightController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Long> cancelFlight(@PathVariable Long id){
         flightService.deleteFlight(id);
-        return new ResponseEntity<>(id, HttpStatus.OK);
+        return new ResponseEntity<>(id, HttpStatus.NO_CONTENT);
     }
 
 }
