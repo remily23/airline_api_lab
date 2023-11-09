@@ -21,10 +21,6 @@ public class FlightService {
     @Autowired
     PassengerRepository passengerRepository;
 
-//    public void addFlight(Flight flight){
-//        flightRepository.save(flight);
-//    }
-
     public Flight addNewFlight(Flight flight){
         flightRepository.save(flight);
         return flight;
@@ -42,10 +38,9 @@ public class FlightService {
         flightRepository.deleteById(id);
     }
 
+    @Transactional
     public void addPassengerToFlight(Long passengerId, Long flightId){
         Flight flight = flightRepository.findById(flightId).get();
-//        int capacity = flight.getCapacity();
-//        int currentCapacity = flightRepository.calculatePassengerFlights
         Passenger passenger = passengerRepository.findById(passengerId).get();
         passenger.addFlight(flight);
         passengerRepository.save(passenger);
